@@ -13,7 +13,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName='All'>
         <Stack.Screen name="Home" component={WelcomeScreen} />
-        <Stack.Screen name="List" component={TrailListScreen} />
+        <Stack.Screen name="List" component={TrailListScreen} options={{ title: 'Nearby Trails' }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

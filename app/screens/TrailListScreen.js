@@ -1,10 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import List from '../components/TrailList';
+import TrailList from '../components/TrailList';
+
 function TrailListScreen(props) {
     return (
         <View style={styles.background}>
-            <Text>Trail List Screen</Text>
+            <TrailList />
         </View>
     );
 }
