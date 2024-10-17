@@ -1,9 +1,11 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View, Text, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import colors from '../config/colors';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
     return (
         <ImageBackground
             style={styles.background}
@@ -13,9 +15,9 @@ function WelcomeScreen(props) {
             <View style={styles.buttonsContainer}>
                 <Button
                     styles={styles.loginButton}
-                    onPress={this._onPressButton}
                     title="Login"
                     color={colors.primary}
+                    onPress={() => navigation.navigate('List')}
                 />
                 <Button
                     style={styles.registerButton}
@@ -49,7 +51,6 @@ const styles = StyleSheet.create({
     },
     loginButton: {
         width: "50%",
-        fontSize: 30,
         backgroundColor: colors.primary
     },
     registerButton: {
