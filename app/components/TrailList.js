@@ -1,7 +1,10 @@
 import React from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const TrailList = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -11,11 +14,23 @@ const TrailList = () => {
           {key: 'Telulah Park'},
           {key: 'Ellen Kort Peace Park'},
         ]}
-        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+        renderItem={({item}) => (  
+            <TouchableWithoutFeedback onPress={ () => {navigation.navigate('Info', {
+              trailName: item.key,
+            })}}>
+              <Text style={styles.item}>{item.key}</Text>
+            </TouchableWithoutFeedback>
+        )}
       />
     </View>
   );
 };
+
+/*actionOnRow(item) {
+  const navigation = useNavigation();
+  console.log('Selected Item :',item.key);
+  navigation.navigate('Info');
+};*/
 
 const styles = StyleSheet.create({
   container: {
