@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, StatusBar } from 'react-native';
+import MapView from 'react-native-maps';
 
 function TrailInfoScreen({route, navigation}) {
     const { trailName } = route.params;
@@ -8,7 +9,16 @@ function TrailInfoScreen({route, navigation}) {
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
                 <Text style={styles.title}>{JSON.stringify(trailName).replace(/\"/g, "")}</Text>
-                <Text style={styles.text}>Distance: 200 miles</Text>
+                <MapView 
+                    style={styles.map}
+                    region={{
+                        latitude: 44.256717560654074,
+                        longitude: -88.4091455998427,
+                        latitudeDelta: 0.00922,
+                        longitudeDelta: 0.00421,
+                      }}
+                />
+                <Text style={styles.text}>Trail Distance: 200 miles</Text>
             </ScrollView>
         </SafeAreaView>
     );
@@ -27,6 +37,10 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 30,
+    },
+    map: {
+      width: '100%',
+      height: 150,
     },
     background: {
         flex: 1,

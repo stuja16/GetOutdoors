@@ -21,9 +21,9 @@ function WelcomeScreen({ navigation }) {
                 />
                 <Button
                     style={styles.registerButton}
-                    onPress={this._onPressButton}
                     title="Register"
                     color={colors.secondary}
+                    onPress={this._onPressButton}
                 />
             </View>
         </ImageBackground>
