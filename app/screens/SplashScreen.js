@@ -3,9 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 function SplashScreen() {
     return (
-        <View style={styles.background}>
-            <Text>Loading</Text>
-        </View>
+        <ImageBackground
+            style={styles.background}
+            source={require("../assets/splash.jpg")}
+        />
     );
 }
 
