@@ -1,0 +1,11 @@
+/*
+This query shows how to convert from an individual trail in the GeoJSON file to
+a Geometry obj in MySQL using the coordinate pairs for the "LineString" obj
+
+Proof of concept for later conversion to tabular data from JSON
+*/
+
+SET @json = '{"id":1,"type":"Feature","properties":{"OBJECTID":1,"permanentidentifier":"dc665981-e024-46c9-aecc-f5d652acaba3","name":"Scott Creek Hwt","namealternate":null,"trailnumber":"55303AB","trailnumberalternate":null,"sourcefeatureid":"1102019010602","sourcedatasetid":"{123F1D48-D171-44C0-B4DD-ECFF92213B7E}","sourcedatadecscription":"USFS Trails 10/2021","sourceoriginator":"U.S. Forest Service","loaddate":"2021-11-01T08:29:32.000","trailtype":"Terra Trail","hikerpedestrian":"Y","bicycle":"N","packsaddle":"N","atv":"N","motorcycle":"N","ohvover50inches":"N","snowshoe":"N","crosscountryski":"N","dogsled":null,"snowmobile":"N","nonmotorizedwatercraft":null,"motorizedwatercraft":null,"primarytrailmaintainer":"FS","nationaltraildesignation":null,"lengthmiles":0.27188279,"networklength":1.65612601,"SHAPE_Length":null,"trailtype_description":"Standard/Terra Trail","hikerpedestrian_description":"Yes","bicycle_description":"No","packsaddle_description":"No","atv_description":"No","motorcycle_description":"No","ohvover50inches_description":"No","snowshoe_description":"No","crosscountryski_description":"No","dogsled_description":"Undefined","snowmobile_description":"No","nonmotorizedwatercraft_description":"Undefined","motorizedwatercraft_description":"Undefined","primarytrailmaintainer_description":"US Forest Service","nationaltraildesignation_description":"Undefined"},"geometry":{"type":"LineString","coordinates":[[-89.06059277949225,45.76155426751046],[-89.06017697845124,45.761879307093295],[-89.05993314303498,45.76213726959287],[-89.05984597532677,45.76246519250901],[-89.05961776178543,45.762682408133685],[-89.05937432845252,45.7628709925084],[-89.05846891491224,45.76303972375814],[-89.05786616074654,45.76324904979947],[-89.05749298158042,45.76354456959069],[-89.05799272220463,45.764278091464575]]}}';
+SELECT ST_AsText(ST_GeomFromGeoJSON(@json)); -- Displays text property
+SELECT ST_SRID(ST_GeomFromGeoJSON(@json));   -- Displays srid refering to a spatial reference system (SRS)
+SELECT ST_AsText(ST_SRID(ST_GeomFromGeoJSON(@json),0));
