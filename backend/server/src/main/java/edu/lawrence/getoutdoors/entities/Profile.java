@@ -1,8 +1,5 @@
 package edu.lawrence.getoutdoors.entities;
 
-// Java-level includes [Utility]
-import java.util.List;
-
 import edu.lawrence.getoutdoors.interfaces.dtos.ProfileDTO;
 // Jakarta-level includes [Class Annotations]
 import jakarta.persistence.Entity;
@@ -12,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -35,12 +31,6 @@ public class Profile{
 	private String phonenumber;
 	
 	private String bio;
-	
-	@OneToMany(mappedBy = "profile")
-	private List<GenreTag> genres;
-
-	@OneToMany(mappedBy = "profile")
-	private List<PlatformTag> platforms;
 	
 	public Profile() {}
 
@@ -106,21 +96,4 @@ public class Profile{
 	public void setBio(String bio) {
 		this.bio = bio;
 	}
-
-	public List<GenreTag> getGenres() {
-		return genres;
-	}
-
-	public void setGenres(List<GenreTag> genres) {
-		this.genres = genres;
-	}
-
-	public List<PlatformTag> getPlatforms() {
-		return platforms;
-	}
-
-	public void setPlatforms(List<PlatformTag> platforms) {
-		this.platforms = platforms;
-	}
-	
 }
