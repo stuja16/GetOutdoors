@@ -1,7 +1,5 @@
 package edu.lawrence.getoutdoors.interfaces;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
@@ -12,15 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.lawrence.getoutdoors.entities.Event;
 import edu.lawrence.getoutdoors.entities.Profile;
 import edu.lawrence.getoutdoors.entities.User;
 import edu.lawrence.getoutdoors.exceptions.DuplicateException;
 import edu.lawrence.getoutdoors.exceptions.UnauthorizedException;
-import edu.lawrence.getoutdoors.interfaces.dtos.EventDTO;
 import edu.lawrence.getoutdoors.interfaces.dtos.ProfileDTO;
 import edu.lawrence.getoutdoors.interfaces.dtos.UserDTO;
 import edu.lawrence.getoutdoors.security.AppUserDetails;
@@ -97,45 +92,5 @@ public class UserController {
     	}
     	ProfileDTO response = new ProfileDTO(result);
     	return ResponseEntity.ok().body(response);
-    }
-    
-    @GetMapping("/events")
-	public ResponseEntity<List<EventDTO>> getEvents(Authentication authentication) {
-    	AppUserDetails details = (AppUserDetails) authentication.getPrincipal();
-    	UUID id = UUID.fromString(details.getUsername());
-    	List<Event> events = us.findEvents(id);
-    	List<EventDTO> results = new ArrayList<EventDTO>();
-        for(Event e : events) {
-			results.add(new EventDTO(e));
-		}
-		return ResponseEntity.ok().body(results);
-	}
-    
-    public class SearchQuery {
-    	public List<String> platTags = new ArrayList<String>();
-    	public List<String> genreTags = new ArrayList<String>();;
-    	public boolean exclusive = false;
-    }
-    
-    /**
-     * url takes the form of "url.../users/profiles?ex=" followed by "true" or "false"
-     * Request body is an otherwise empty ProfileDTO with queried tags in it's body
-     * ex path variable controls whether search is exclusive
-     * exclusive search requires ALL tags in a prospective Profile to match with the query
-     * in exclusive requires at least one match
-     * If no matches are found, returns a list with just the querying DTO included
-     * If tag list in querying DTO is empty, returns all profiles (regardless of ex) 
-     **/
-    @GetMapping(value = "/profiles", params = "ex")
-    public ResponseEntity<List<ProfileDTO>> getProfilesWithTags(
-    		@RequestBody ProfileDTO query, @RequestParam(name = "ex") boolean exclusive) {
-        List<ProfileDTO> ret;
-    
-    	if (exclusive)
-    		ret = us.findByTagsEX(query);
-    	else
-    		ret = us.findByTags(query);
-    	
-    	return ResponseEntity.ok().body(ret);
     }
 }

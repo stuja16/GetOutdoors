@@ -10,7 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import edu.lawrence.getoutdoors.entities.User;
 
 public interface UserRepository extends JpaRepository<User, UUID>{
-	
 	List<User> findByUsername(String username);
-	
 }

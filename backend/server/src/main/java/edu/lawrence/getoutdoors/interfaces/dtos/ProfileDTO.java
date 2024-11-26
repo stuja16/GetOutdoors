@@ -1,9 +1,5 @@
 package edu.lawrence.getoutdoors.interfaces.dtos;
 
-// Java-level incldues [Utility]
-import java.util.ArrayList;
-import java.util.List;
-
 import edu.lawrence.getoutdoors.entities.Profile;
 
 public class ProfileDTO{
@@ -13,8 +9,6 @@ public class ProfileDTO{
 	private int countrycode;
 	private String phonenumber;
 	private String bio;
-	private List<String> genres;
-	private List<String> platforms;
 	
 	public ProfileDTO() {
 		countrycode = 1;
@@ -26,12 +20,6 @@ public class ProfileDTO{
 		emailaddress = core.getEmailaddress();
 		phonenumber = core.getPhonenumber();
 		bio = core.getBio();
-		
-		genres = new ArrayList<String>();
-		core.getGenres().forEach((g) -> genres.add(g.getName()));
-		
-		platforms = new ArrayList<String>();
-		core.getPlatforms().forEach((p) -> platforms.add(p.getName()));
 	}
 	
 	public String getUser() {
@@ -81,21 +69,4 @@ public class ProfileDTO{
 	public void setBio(String bio) {
 		this.bio = bio;
 	}
-
-	public List<String> getGenres() {
-		return genres;
-	}
-
-	public void setGenres(List<String> genres) {
-		this.genres = genres;
-	}
-	
-	public List<String> getPlatforms() {
-		return platforms;
-	}
-	
-	public void setPlatforms(List<String> platforms) {
-		this.platforms = platforms;
-	}
-	
 }

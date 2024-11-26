@@ -10,7 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import edu.lawrence.getoutdoors.entities.Profile;
 
 public interface ProfileRepository extends JpaRepository<Profile, Integer>{
-	
 	Optional<Profile> findByUserId(UUID userid);
-	
 }
