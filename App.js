@@ -6,6 +6,8 @@ import { SafeAreaProvider, } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
+import SignInScreen from './app/screens/Authentication/SignInScreen';
+
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import TrailListScreen from './app/screens/TrailListScreen';
 import TrailInfoScreen from './app/screens/TrailInfoScreen';
@@ -18,6 +20,7 @@ function SearchStackScreen() {
   return (
     <SearchStack.Navigator>
       <SearchStack.Screen name="Home" component={WelcomeScreen} />
+      <SearchStack.Screen name="SignIn" component={SignInScreen} />
       <SearchStack.Screen name="List" component={TrailListScreen} options={{ title: 'Nearby Trails' }} />
       <SearchStack.Screen name="Info" component={TrailInfoScreen} />
     </SearchStack.Navigator>

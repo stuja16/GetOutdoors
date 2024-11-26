@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Trail {
+public class Trail_Data {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Trail {
 
     private Double distance;
 
-    public Trail() {}
+    public Trail_Data() {}
 
     public Integer getTrail_number() {
         return this.trail_number;

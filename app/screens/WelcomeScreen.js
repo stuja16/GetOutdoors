@@ -17,13 +17,13 @@ function WelcomeScreen({ navigation }) {
                     styles={styles.loginButton}
                     title="Login"
                     color={colors.primary}
-                    onPress={() => navigation.navigate('List')}
+                    onPress={() => navigation.navigate('SignIn')}
                 />
                 <Button
                     style={styles.registerButton}
                     title="Register"
                     color={colors.secondary}
-                    onPress={this._onPressButton}
+                    onPress={() => navigation.navigate('List')}
                 />
             </View>
         </ImageBackground>
