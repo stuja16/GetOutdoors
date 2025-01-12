@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.6</version>
+		<version>3.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.lawrence</groupId>
 	<artifactId>GetOutdoors</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>GetOutdoors</name>
-	<description>Backend for trail finding applica</description>
+	<description>Backend for trail finding app</description>
 	<dependencies>
 
 		<dependency>
