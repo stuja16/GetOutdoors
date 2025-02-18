@@ -5,6 +5,7 @@ function ProfileScreen() {
     return (
         <View style={styles.background}>
             <Text>Profile</Text>
+            // Profile Image, not sure what class name
         </View>
     );
 }
