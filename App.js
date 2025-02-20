@@ -50,7 +50,14 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Navigator
+          screenOptions={{
+            headerShown: false,
+            tabBarLabelStyle: {
+              fontSize: 16,
+            },
+          }}
+        >
           <Tab.Screen
             name="Search"
             component={SearchStackScreen}
