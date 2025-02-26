@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     logoContainer: {
         position: "absolute",
         top: 350,
-        backgroundColor: colors.light,
+        backgroundColor: colors.background,
         height: 70,
         color: colors.primary,
         fontSize: 45,

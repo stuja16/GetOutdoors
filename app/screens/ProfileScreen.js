@@ -111,7 +111,7 @@ onPressEdit = () => {
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: colors.background,
   },
   iconRow: {
     flex: 2,

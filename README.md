@@ -31,3 +31,7 @@ Here are instructions for running the application in a devopment environment. Ag
 5. When done, press `Ctrl+C` to close the Metro Bundler.
 
 More detailed instructions can be found [here.](https://reactnative.dev/docs/running-on-device)
+
+## Acknowledgements
+
+I used [**Coolors**](https://coolors.co/) to find/generate a color palette. You can find the specific one I chose [here.](https://coolors.co/faf3dd-c8d5b9-8fc0a9-68b0ab-4a7c59) If you want to alter the color palette, modify the colors.js file in the config folder.
