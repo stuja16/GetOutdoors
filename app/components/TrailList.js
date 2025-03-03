@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 import colors from "../config/colors";
 
@@ -18,7 +19,14 @@ const TrailList = () => {
     <View style={styles.background}>
       <FlatList
         data={[
-          { key: "Newberry Trail", length: 1.75, hiking: true },
+          {
+            key: "Newberry Trail",
+            length: 1.75,
+            hiking: true,
+            biking: true,
+            snowshoeing: true,
+            skiing: false,
+          },
           { key: "Hydroelectric Heritage Trailway" },
           { key: "Telulah Park" },
           { key: "Ellen Kort Peace Park" },
@@ -44,16 +52,34 @@ const TrailList = () => {
                 <Text style={styles.length}>{item.length || "?"} miles</Text>
               </View>
               <View style={styles.iconRow}>
-                <FontAwesome6
-                  name="person-hiking"
-                  size={24}
-                  color={colors.primary}
-                />
-                <FontAwesome6
-                  name="person-biking"
-                  size={24}
-                  color={colors.primary}
-                />
+                {item.hiking && (
+                  <FontAwesome6
+                    name="person-hiking"
+                    size={24}
+                    color={colors.primary}
+                  />
+                )}
+                {item.biking && (
+                  <FontAwesome6
+                    name="person-biking"
+                    size={24}
+                    color={colors.primary}
+                  />
+                )}
+                {item.snowshoeing && (
+                  <MaterialIcons
+                    name="snowshoeing"
+                    size={24}
+                    color={colors.primary}
+                  />
+                )}
+                {item.skiing && (
+                  <FontAwesome6
+                    name="person-skiing-nordic"
+                    size={24}
+                    color={colors.primary}
+                  />
+                )}
               </View>
             </View>
           </TouchableWithoutFeedback>
