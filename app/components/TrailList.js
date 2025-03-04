@@ -15,10 +15,20 @@ import colors from "../config/colors";
 const TrailList = () => {
   const navigation = useNavigation();
 
+  // Test trail data
+
   return (
     <View style={styles.background}>
       <FlatList
         data={[
+          {
+            key: "Scott Creek Hwt",
+            length: 0.27188279,
+            hiking: true,
+            biking: false,
+            snowshoeing: false,
+            skiing: false,
+          },
           {
             key: "Newberry Trail",
             length: 1.75,
@@ -55,7 +65,7 @@ const TrailList = () => {
             <View style={styles.item}>
               <View style={{flexShrink:1}}>
                 <Text style={styles.name}>{item.key}</Text>
-                <Text style={styles.length}>{item.length || "?"} miles</Text>
+                <Text style={styles.length}>{item.length ? item.length.toFixed(2) : "?"} miles</Text>
               </View>
               <View style={styles.iconRow}>
                 {item.hiking && (
