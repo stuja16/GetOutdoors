@@ -27,7 +27,13 @@ const TrailList = () => {
             snowshoeing: true,
             skiing: false,
           },
-          { key: "Hydroelectric Heritage Trailway" },
+          {
+            key: "Hydroelectric Heritage Trailway Park",
+            hiking: true,
+            biking: true,
+            snowshoeing: true,
+            skiing: true,
+          },
           { key: "Telulah Park" },
           { key: "Ellen Kort Peace Park" },
           { key: "Old Stone Bridge Trail" },
@@ -47,7 +53,7 @@ const TrailList = () => {
             }}
           >
             <View style={styles.item}>
-              <View>
+              <View style={{flexShrink:1}}>
                 <Text style={styles.name}>{item.key}</Text>
                 <Text style={styles.length}>{item.length || "?"} miles</Text>
               </View>
@@ -99,10 +105,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 10,
-    height: 70,
+    paddingBottom: 12,
   },
   name: {
     fontSize: 25,
+    flexWrap: "wrap",
+    flexShrink: 1,
   },
   length: {
     fontSize: 17,
