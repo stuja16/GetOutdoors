@@ -19,7 +19,7 @@ const TrailList = () => {
   // Test trail data
 
   return (
-    <View style={styles.background}>
+    <View style={styles.container}>
       <FlatList
         data={[
           {
@@ -118,8 +118,7 @@ const TrailList = () => {
 };
 
 const styles = StyleSheet.create({
-  background: {
-    paddingTop: 22,
+  container: {
     backgroundColor: colors.background,
   },
   item: {
