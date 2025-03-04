@@ -34,4 +34,4 @@ More detailed instructions can be found [here.](https://reactnative.dev/docs/run
 
 ## Acknowledgements
 
-I used [**Coolors**](https://coolors.co/) to find/generate a color palette. You can find the specific one I chose [here.](https://coolors.co/faf3dd-c8d5b9-8fc0a9-68b0ab-4a7c59) If you want to alter the color palette, modify the colors.js file in the config folder.
+I used [**Coolors**](https://coolors.co/) to find/generate a color palette. You can find the specific one I chose [here.](https://coolors.co/f2f3f4-4f7942-3b3c36-e3dac9-b9d9eb) If you want to alter the color palette, modify the colors.js file in the config folder.

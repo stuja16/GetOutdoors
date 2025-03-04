@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   length: {
     fontSize: 17,
-    color: "grey",
+    color: colors.secondary,
   },
   iconRow: {
     flexDirection: "row",

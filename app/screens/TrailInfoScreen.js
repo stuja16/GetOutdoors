@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 50,
-    color: colors.secondary,
+    color: colors.primary,
     textAlign: "center",
   },
   text: {
