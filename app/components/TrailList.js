@@ -6,6 +6,7 @@ import {
   View,
   TouchableWithoutFeedback,
 } from "react-native";
+import { Divider } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -30,6 +31,13 @@ const TrailList = () => {
             skiing: false,
             lat: 45.76155426751046,
             long: -89.06059277949225,
+          },
+          {
+            key: "Oak Island Trail",
+            length: 0.92480217,
+            hiking: true,
+            long: -90.72771460815454,
+            lat: 46.95792454482012,
           },
           {
             key: "Newberry Trail",
@@ -73,43 +81,48 @@ const TrailList = () => {
               });
             }}
           >
-            <View style={styles.item}>
-              <View style={{ flexShrink: 1 }}>
-                <Text style={styles.name}>{item.key}</Text>
-                <Text style={styles.length}>
-                  {item.length ? item.length.toFixed(2) : "?"} miles
-                </Text>
+            <View style={{paddingVertical:5}}>
+              <View style={styles.item}>
+                <View style={{ flexShrink: 1 }}>
+                  <Text style={styles.name}>{item.key}</Text>
+                  <Text style={styles.length}>
+                    {item.length ? item.length.toFixed(2) : "?"} miles
+                  </Text>
+                </View>
+                <View style={styles.iconRow}>
+                  {item.hiking && (
+                    <FontAwesome6
+                      name="person-hiking"
+                      size={24}
+                      color={colors.primary}
+                    />
+                  )}
+                  {item.biking && (
+                    <FontAwesome6
+                      name="person-biking"
+                      size={24}
+                      color={colors.primary}
+                    />
+                  )}
+                  {item.snowshoeing && (
+                    <MaterialIcons
+                      name="snowshoeing"
+                      size={24}
+                      color={colors.primary}
+                    />
+                  )}
+                  {item.skiing && (
+                    <FontAwesome6
+                      name="person-skiing-nordic"
+                      size={24}
+                      color={colors.primary}
+                    />
+                  )}
+                </View>
               </View>
-              <View style={styles.iconRow}>
-                {item.hiking && (
-                  <FontAwesome6
-                    name="person-hiking"
-                    size={24}
-                    color={colors.primary}
-                  />
-                )}
-                {item.biking && (
-                  <FontAwesome6
-                    name="person-biking"
-                    size={24}
-                    color={colors.primary}
-                  />
-                )}
-                {item.snowshoeing && (
-                  <MaterialIcons
-                    name="snowshoeing"
-                    size={24}
-                    color={colors.primary}
-                  />
-                )}
-                {item.skiing && (
-                  <FontAwesome6
-                    name="person-skiing-nordic"
-                    size={24}
-                    color={colors.primary}
-                  />
-                )}
-              </View>
+              <Divider
+                color={colors.primary}
+              />
             </View>
           </TouchableWithoutFeedback>
         )}
@@ -121,7 +134,7 @@ const TrailList = () => {
 const styles = StyleSheet.create({
   background: {
     paddingTop: 22,
-    backgroundColor: "white",
+    backgroundColor: colors.background,
   },
   item: {
     flexDirection: "row",
