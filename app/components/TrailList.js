@@ -28,6 +28,8 @@ const TrailList = () => {
             biking: false,
             snowshoeing: false,
             skiing: false,
+            lat: 45.76155426751046,
+            long: -89.06059277949225,
           },
           {
             key: "Newberry Trail",
@@ -36,6 +38,8 @@ const TrailList = () => {
             biking: true,
             snowshoeing: true,
             skiing: false,
+            lat: 44.26199743054238,
+            long: -88.40139410140904,
           },
           {
             key: "Hydroelectric Heritage Trailway Park",
@@ -45,7 +49,11 @@ const TrailList = () => {
             skiing: true,
           },
           { key: "Telulah Park" },
-          { key: "Ellen Kort Peace Park" },
+          {
+            key: "Ellen Kort Peace Park",
+            lat: 44.256717560654074,
+            long: -88.4091455998427,
+          },
           { key: "Old Stone Bridge Trail" },
           { key: "Peabody Park" },
           { key: "Trestle Trail" },
@@ -59,13 +67,18 @@ const TrailList = () => {
             onPress={() => {
               navigation.navigate("Info", {
                 trailName: item.key,
+                length: item.length,
+                coordLat: item.lat,
+                coordLong: item.long,
               });
             }}
           >
             <View style={styles.item}>
-              <View style={{flexShrink:1}}>
+              <View style={{ flexShrink: 1 }}>
                 <Text style={styles.name}>{item.key}</Text>
-                <Text style={styles.length}>{item.length ? item.length.toFixed(2) : "?"} miles</Text>
+                <Text style={styles.length}>
+                  {item.length ? item.length.toFixed(2) : "?"} miles
+                </Text>
               </View>
               <View style={styles.iconRow}>
                 {item.hiking && (
@@ -108,7 +121,7 @@ const TrailList = () => {
 const styles = StyleSheet.create({
   background: {
     paddingTop: 22,
-    backgroundColor: colors.background,
+    backgroundColor: "white",
   },
   item: {
     flexDirection: "row",
@@ -118,6 +131,7 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
   },
   name: {
+    color: colors.primary,
     fontSize: 25,
     flexWrap: "wrap",
     flexShrink: 1,
