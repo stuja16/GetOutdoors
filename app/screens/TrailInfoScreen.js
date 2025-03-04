@@ -13,7 +13,7 @@ import colors from "../config/colors";
 
 function TrailInfoScreen({ route }) {
   // Retrieve parameter from navigation object from TrailList.js
-  const { trailName, length, coordLat, coordLong } = route.params;
+  const { trailName, length, coordLat, coordLong, maintainer } = route.params;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -21,7 +21,9 @@ function TrailInfoScreen({ route }) {
         <Text style={styles.title}>
           {JSON.stringify(trailName).replace(/\"/g, "")}
         </Text>
-        <Text style={styles.text}>{length ? length.toFixed(2) : "?"} miles</Text>
+        <Text style={styles.distance}>
+          {length ? length.toFixed(2) : "?"} miles
+        </Text>
         <MapView
           style={styles.map}
           region={{
@@ -31,6 +33,8 @@ function TrailInfoScreen({ route }) {
             longitudeDelta: 0.00421,
           }}
         />
+        <Text style={styles.maintainer}>Primary trail maintainer:</Text>
+        <Text style={styles.maintainer}>{maintainer}</Text>
       </ScrollView>
     </SafeAreaView>
   );
@@ -55,7 +59,7 @@ const styles = StyleSheet.create({
     color: colors.primary,
     textAlign: "center",
   },
-  text: {
+  distance: {
     fontSize: 30,
     color: colors.secondary,
     textAlign: "center",
@@ -70,6 +74,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  maintainer: {
+    fontSize: 20,
+    color: colors.secondary,
   },
 });
 

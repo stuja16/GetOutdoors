@@ -26,11 +26,9 @@ const TrailList = () => {
             key: "Scott Creek Hwt",
             length: 0.27188279,
             hiking: true,
-            biking: false,
-            snowshoeing: false,
-            skiing: false,
             lat: 45.76155426751046,
             long: -89.06059277949225,
+            maintainer: "US Forest Service",
           },
           {
             key: "Oak Island Trail",
@@ -38,37 +36,26 @@ const TrailList = () => {
             hiking: true,
             long: -90.72771460815454,
             lat: 46.95792454482012,
+            maintainer: "National Park Service",
           },
           {
-            key: "Newberry Trail",
-            length: 1.75,
+            key: "Glacial Drumlin State Trail",
+            length: 5.17468934,
             hiking: true,
             biking: true,
-            snowshoeing: true,
-            skiing: false,
-            lat: 44.26199743054238,
-            long: -88.40139410140904,
+            long: -88.56189529589136,
+            lat: 43.01163706969555,
+            maintainer: "State",
           },
           {
-            key: "Hydroelectric Heritage Trailway Park",
-            hiking: true,
-            biking: true,
+            key: "Mccomb Ski Trail Spur C",
+            length: 0.09643258,
             snowshoeing: true,
             skiing: true,
+            long: -88.49576481370235,
+            lat: 45.15041104450074,
+            maintainer: "US Forest Service",
           },
-          { key: "Telulah Park" },
-          {
-            key: "Ellen Kort Peace Park",
-            lat: 44.256717560654074,
-            long: -88.4091455998427,
-          },
-          { key: "Old Stone Bridge Trail" },
-          { key: "Peabody Park" },
-          { key: "Trestle Trail" },
-          { key: "Loop the Little Lake Trail" },
-          { key: "Bubolz Nature Preserve" },
-          { key: "Heckrodt Wetland Reserve" },
-          { key: "Example Trail" },
         ]}
         renderItem={({ item }) => (
           <TouchableWithoutFeedback
@@ -78,10 +65,11 @@ const TrailList = () => {
                 length: item.length,
                 coordLat: item.lat,
                 coordLong: item.long,
+                maintainer: item.maintainer,
               });
             }}
           >
-            <View style={{paddingVertical:5}}>
+            <View style={{ paddingVertical: 5 }}>
               <View style={styles.item}>
                 <View style={{ flexShrink: 1 }}>
                   <Text style={styles.name}>{item.key}</Text>
@@ -120,9 +108,7 @@ const TrailList = () => {
                   )}
                 </View>
               </View>
-              <Divider
-                color={colors.primary}
-              />
+              <Divider color={colors.primary} />
             </View>
           </TouchableWithoutFeedback>
         )}
