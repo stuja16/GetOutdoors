@@ -14,13 +14,11 @@ function WelcomeScreen({ navigation }) {
             <Text style={styles.logoContainer}> Get Outdoors </Text>
             <View style={styles.buttonsContainer}>
                 <Button
-                    styles={styles.loginButton}
                     title="Login"
                     color={colors.primary}
                     onPress={() => navigation.navigate('SignIn')}
                 />
                 <Button
-                    style={styles.registerButton}
                     title="Register"
                     color={colors.secondary}
                     onPress={() => navigation.navigate('List')}
@@ -49,15 +47,6 @@ const styles = StyleSheet.create({
         width: "100%",
         bottom: 25,
     },
-    loginButton: {
-        width: "50%",
-        backgroundColor: colors.primary
-    },
-    registerButton: {
-        width: "100%",
-        height: 70,
-        backgroundColor: colors.secondary
-    }
 })
 
 export default WelcomeScreen;
