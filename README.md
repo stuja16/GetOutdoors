@@ -26,7 +26,7 @@ Here are instructions for running the application in a devopment environment. Ag
 2. Open Android Studio and launch an AVD to run the application on.
 3. Run *one* of the following commands in the terminal:
     i. `npm start`
-    ii. `expo start`
+    ii. `npx expo start`
 4. Once Metro Bundler launches from the terminal, press `a` to open the application on Android.
 5. When done, press `Ctrl+C` to close the Metro Bundler.
 
