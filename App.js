@@ -3,16 +3,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
+// Local imports
 import SignInScreen from "./app/screens/Authentication/SignInScreen";
-
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import TrailListScreen from "./app/screens/TrailListScreen";
 import TrailInfoScreen from "./app/screens/TrailInfoScreen";
 import ProfileScreen from "./app/screens/ProfileScreen";
 import SettingsScreen from "./app/screens/SettingsScreen";
+import BookmarksScreen from "./app/screens/BookmarksScreen";
+import colors from "./app/config/colors";
 
 const Tab = createBottomTabNavigator();
 const SearchStack = createNativeStackNavigator();
@@ -53,11 +54,28 @@ export default function App() {
         <Tab.Navigator
           screenOptions={{
             headerShown: false,
+            tabBarStyle: {
+              height: 58,
+            },
+            tabBarItemStyle: {
+              margin: 6,
+            },
             tabBarLabelStyle: {
               fontSize: 16,
             },
+            tabBarActiveTintColor: colors.primary,
+            tabBarInactiveTintColor: colors.secondary,
           }}
         >
+          <Tab.Screen
+            name="Profile"
+            component={ProfileStackScreen}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="person-outline" size={size} color={color} />
+              ),
+            }}
+          />
           <Tab.Screen
             name="Search"
             component={SearchStackScreen}
@@ -72,11 +90,15 @@ export default function App() {
             }}
           />
           <Tab.Screen
-            name="Profile"
-            component={ProfileStackScreen}
+            name="Saved"
+            component={BookmarksScreen}
             options={{
               tabBarIcon: ({ color, size }) => (
-                <Ionicons name="person-outline" size={size} color={color} />
+                <MaterialCommunityIcons
+                  name="bookmark-multiple-outline"
+                  size={size}
+                  color={color}
+                />
               ),
             }}
           />

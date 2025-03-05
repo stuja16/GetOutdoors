@@ -24,7 +24,7 @@ import colors from "../config/colors";
 // Add optimization for FlatList
 //  - Lazy rendering for not currently displayed?
 
-const TrailList = props => {
+const TrailList = (props) => {
   const navigation = useNavigation();
 
   return (
@@ -40,6 +40,7 @@ const TrailList = props => {
                 coordLat: item.geometry.coordinates[0][1],
                 coordLong: item.geometry.coordinates[0][0],
                 maintainer: item.properties.primarytrailmaintainer,
+                trailId: item.id,
               });
             }}
           >
