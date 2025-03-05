@@ -13,7 +13,6 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 // Local imports
-import data from "../data/TrailData.json";
 import colors from "../config/colors";
 
 // TrailData.json holds current production data
@@ -25,13 +24,13 @@ import colors from "../config/colors";
 // Add optimization for FlatList
 //  - Lazy rendering for not currently displayed?
 
-const TrailList = () => {
+const TrailList = props => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={data.features}
+        data={props.data}
         renderItem={({ item }) => (
           <TouchableWithoutFeedback
             onPress={() => {

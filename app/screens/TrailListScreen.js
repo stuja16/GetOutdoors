@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
+import dataList from "../data/TrailData.json";
 import TrailList from "../components/TrailList";
 import colors from "../config/colors";
 
@@ -44,7 +45,7 @@ function TrailListScreen() {
           <FontAwesome name="chevron-down" size={16} color={colors.secondary} />
         </TouchableOpacity>
       </View>
-      <TrailList />
+      <TrailList data={dataList.features}/>
     </SafeAreaView>
   );
 }
