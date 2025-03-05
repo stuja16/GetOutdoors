@@ -21,6 +21,7 @@ function TrailListScreen() {
           flexDirection: "row",
           justifyContent: "space-around",
           gap: 13,
+          marginBottom: 8,
         }}
       >
         <TouchableOpacity style={styles.button}>
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   background: {
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 22,
+    paddingTop: 30,
     backgroundColor: colors.background,
   },
   button: {

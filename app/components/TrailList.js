@@ -105,6 +105,7 @@ const TrailList = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
+    marginBottom: 38,
   },
   item: {
     flexDirection: "row",
