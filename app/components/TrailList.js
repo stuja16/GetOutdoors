@@ -10,6 +10,7 @@ import { Divider } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 // Local imports
 import data from "../data/TrailData.json";
@@ -48,7 +49,10 @@ const TrailList = () => {
                 <View style={{ flexShrink: 1 }}>
                   <Text style={styles.name}>{item.properties.name}</Text>
                   <Text style={styles.length}>
-                    {item.properties.lengthmiles ? item.properties.lengthmiles.toFixed(2) : "?"} miles
+                    {item.properties.lengthmiles
+                      ? item.properties.lengthmiles.toFixed(2)
+                      : "?"}{" "}
+                    miles
                   </Text>
                 </View>
                 <View style={styles.iconRow}>
@@ -66,10 +70,17 @@ const TrailList = () => {
                       color={colors.primary}
                     />
                   )}
+                  {item.properties.packsaddle == "Y" && (
+                    <MaterialCommunityIcons
+                      name="horse-human"
+                      size={28}
+                      color={colors.primary}
+                    />
+                  )}
                   {item.properties.snowshoe == "Y" && (
                     <MaterialIcons
                       name="snowshoeing"
-                      size={24}
+                      size={28}
                       color={colors.primary}
                     />
                   )}
