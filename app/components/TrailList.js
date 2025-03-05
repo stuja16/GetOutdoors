@@ -11,95 +11,69 @@ import { useNavigation } from "@react-navigation/native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
+// Local imports
+import data from "../data/TrailData.json";
 import colors from "../config/colors";
+
+// TrailData.json holds current production data
+// Trans_TrailSegment.json holds full data from USGS National Transportation Database
+//  - Needs cleaning for trails without names
+//  - Remove duplicates: same values for "sourcefeatureid" and "sourcedatasetid" OR same value for "trailnumber"
+//  - Other data cleaning needs?
+
+// Add optimization for FlatList
+//  - Lazy rendering for not currently displayed?
 
 const TrailList = () => {
   const navigation = useNavigation();
 
-  // Test trail data
-
   return (
     <View style={styles.container}>
       <FlatList
-        data={[
-          {
-            key: "Scott Creek Hwt",
-            length: 0.27188279,
-            hiking: true,
-            lat: 45.76155426751046,
-            long: -89.06059277949225,
-            maintainer: "US Forest Service",
-          },
-          {
-            key: "Oak Island Trail",
-            length: 0.92480217,
-            hiking: true,
-            long: -90.72771460815454,
-            lat: 46.95792454482012,
-            maintainer: "National Park Service",
-          },
-          {
-            key: "Glacial Drumlin State Trail",
-            length: 5.17468934,
-            hiking: true,
-            biking: true,
-            long: -88.56189529589136,
-            lat: 43.01163706969555,
-            maintainer: "State",
-          },
-          {
-            key: "Mccomb Ski Trail Spur C",
-            length: 0.09643258,
-            snowshoeing: true,
-            skiing: true,
-            long: -88.49576481370235,
-            lat: 45.15041104450074,
-            maintainer: "US Forest Service",
-          },
-        ]}
+        data={data.features}
         renderItem={({ item }) => (
           <TouchableWithoutFeedback
             onPress={() => {
               navigation.navigate("Info", {
-                trailName: item.key,
-                length: item.length,
-                coordLat: item.lat,
-                coordLong: item.long,
-                maintainer: item.maintainer,
+                trailName: item.properties.name,
+                length: item.properties.lengthmiles,
+                coordLat: item.geometry.coordinates[0][1],
+                coordLong: item.geometry.coordinates[0][0],
+                maintainer: item.properties.primarytrailmaintainer,
               });
             }}
           >
             <View style={{ paddingVertical: 5 }}>
               <View style={styles.item}>
                 <View style={{ flexShrink: 1 }}>
-                  <Text style={styles.name}>{item.key}</Text>
+                  <Text style={styles.name}>{item.properties.name}</Text>
                   <Text style={styles.length}>
-                    {item.length ? item.length.toFixed(2) : "?"} miles
+                    {item.properties.lengthmiles ? item.properties.lengthmiles.toFixed(2) : "?"} miles
                   </Text>
                 </View>
                 <View style={styles.iconRow}>
-                  {item.hiking && (
+                  {item.properties.hikerpedestrian == "Y" && (
                     <FontAwesome6
                       name="person-hiking"
                       size={24}
                       color={colors.primary}
                     />
                   )}
-                  {item.biking && (
+                  {item.properties.bicycle == "Y" && (
                     <FontAwesome6
                       name="person-biking"
                       size={24}
                       color={colors.primary}
                     />
                   )}
-                  {item.snowshoeing && (
+                  {item.properties.snowshoe == "Y" && (
                     <MaterialIcons
                       name="snowshoeing"
                       size={24}
                       color={colors.primary}
                     />
                   )}
-                  {item.skiing && (
+                  {item.properties.crosscountryski == "Y" && (
                     <FontAwesome6
                       name="person-skiing-nordic"
                       size={24}
